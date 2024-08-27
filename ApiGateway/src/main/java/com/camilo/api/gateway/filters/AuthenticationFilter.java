@@ -33,7 +33,7 @@ public class AuthenticationFilter implements GatewayFilter {
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 		ServerHttpRequest request = (ServerHttpRequest) exchange.getRequest();
 
-		final List<String> apiEndpoints = List.of("/register", "/login");
+		final List<String> apiEndpoints = List.of("/login");
 		/**
 		 * Feature-OpenEndpoint: Remove the comments of "Feature-OpenEndpoint" to unprotect a specific endpoint
 		 *final List<String> openSpecificEndpoints = List.of("/exactly path to your endpoint");
