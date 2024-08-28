@@ -28,7 +28,8 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Phone> phones;
 	@NotNull
-	private Boolean active;
+	@Column(name="is_active")
+	private Boolean isActive;
 	@NotNull
 	@Column(name="last_login")
 	private Date lastLogin;
@@ -38,11 +39,4 @@ public class User {
 	@NotNull
 	@Column(name="updated_at")
 	private Date updatedAt;
-
-	@PrePersist
-	protected void onCreate() {
-		createdAt = new Date();
-		lastLogin = createdAt;
-		active = true;
-	}
 }
