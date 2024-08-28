@@ -1,9 +1,7 @@
 package com.camilo.usermicroservice.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
@@ -12,6 +10,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "users")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(columnDefinition = "UUID")

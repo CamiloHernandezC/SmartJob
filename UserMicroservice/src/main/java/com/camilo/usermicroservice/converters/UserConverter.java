@@ -31,14 +31,16 @@ public class UserConverter {
 	public User toEntity(final UserDTO dto) {
 		final ModelMapper modelMapper = new ModelMapper();
 		User user = modelMapper.map(dto, User.class);
-		final List<Phone> phones = user.getPhones().stream()
-				.map(phoneDTO -> {
-					Phone phone = modelMapper.map(phoneDTO, Phone.class);
-					phone.setUser(user);
-					return phone;
-				})
-				.collect(Collectors.toList());
-		user.setPhones(phones);
+		if(user.getPhones() != null) {
+			final List<Phone> phones = user.getPhones().stream()
+					.map(phoneDTO -> {
+						Phone phone = modelMapper.map(phoneDTO, Phone.class);
+						phone.setUser(user);
+						return phone;
+					})
+					.collect(Collectors.toList());
+			user.setPhones(phones);
+		}
 		return user;
 	}
 }
